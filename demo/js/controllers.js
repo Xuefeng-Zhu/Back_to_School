@@ -35,9 +35,20 @@ controller('ResearchCtrl', ['$scope', '$http',
             $http.get([url, 'years', $scope.university + '.json'].join('/'))
                 .success(function(response) {
                     processRes(response, ref[size], $scope.university);
-                    console.log(ref);
-                    plotChart(ref[size].data)
-                })
+                    plotChart(ref[size]);
+                    $scope.university = null;
+                    $scope.metric = null;
+                });
+        }
+
+        $scope.addNewUniversity = function(ref) {
+            $http.get([url, 'years', ref.university + '.json'].join('/'))
+                .success(function(response) {
+                    processRes(response, ref, ref.university);
+                    plotChart(ref);
+                    ref.university = null;
+                    ref.metric = null;
+                });
         }
 
         function processRes(res, ref, university) {
@@ -63,13 +74,13 @@ controller('ResearchCtrl', ['$scope', '$http',
             }
         }
 
-        function plotChart(d) {
-            var data = google.visualization.arrayToDataTable(d);
+        function plotChart(ref) {
+            var data = google.visualization.arrayToDataTable(ref.data);
             var options = {
-                title: 'Comparison between Universities',
+                title: 'Comparison between Universities on ' + ref.metric,
                 curveType: 'function',
             };
-            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div' + ref.id));
 
             chart.draw(data, options);
         }
