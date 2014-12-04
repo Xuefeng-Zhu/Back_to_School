@@ -86,7 +86,7 @@ controller('ResearchCtrl', ['$scope', '$http',
 
     }
 ])
-    .controller('MyCtrl2', [
+    .controller('SearchCtrl', [
 
         function() {
 
