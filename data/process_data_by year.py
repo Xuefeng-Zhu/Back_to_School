@@ -22,7 +22,7 @@ if __name__ == '__main__':
 				years[individual[3]].append(tmp)
 			else:
 				years[individual[3]] = [tmp]
-		universities[university.split('/')[0]] = years 
+		universities[university.split('/')[0].title()] = years 
 	with open('data_by_year.json', 'w') as f:
 		json.dump(universities, f)
 	print json.dumps(sorted(universities.keys()))

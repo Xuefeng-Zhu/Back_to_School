@@ -86,9 +86,9 @@ controller('ResearchCtrl', ['$scope', '$http',
 
     }
 ])
-    .controller('SearchCtrl', [
+    .controller('SearchCtrl', ['$scope', '$http',
+    function($scope, $http){
+    	$scope.universities = universities;
 
-        function() {
-
-        }
+    }
     ]);
