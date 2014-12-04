@@ -6,10 +6,14 @@ google.load("visualization", "1", {
 /* Controllers */
 var url = 'https://back-school.firebaseio.com/'
 angular.module('myApp.controllers', [])
-    .controller('MainCtrl', ['$scope', '$http',
-        function($scope, $http) {
+    .controller('MainCtrl', ['$scope', '$location',
+        function($scope, $location) {
             $scope.universities = universities;
             $scope.metrics = metrics;
+
+            $scope.$on('$locationChangeSuccess', function(){
+            	$scope.tab = $location.path();
+            })
         }
     ])
     .controller('ResearchCtrl', ['$scope', '$http',
