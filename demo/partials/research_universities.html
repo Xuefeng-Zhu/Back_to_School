@@ -13,7 +13,7 @@
 			<select class="form-control" placeholder="Select a University" ng-model="comp.university" ng-options="u for u in universities">
 				<option value="">-- Select a University --</option>
 			</select>
-			<button class="btn btn-primary btn-raised" ng-show="comp.university">Add</button>
+			<button class="btn btn-primary btn-raised" ng-show="comp.university" ng-click="addNewUniversity(comp)">Add</button>
 		</div>
 	</div>
 </div>

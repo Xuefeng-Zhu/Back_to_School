@@ -47,7 +47,6 @@ controller('ResearchCtrl', ['$scope', '$http',
                     processRes(response, ref, ref.university);
                     plotChart(ref);
                     ref.university = null;
-                    ref.metric = null;
                 });
         }
 
