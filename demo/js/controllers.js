@@ -29,17 +29,33 @@ controller('ResearchCtrl', ['$scope', '$http',
 
             $http.get([url, 'years', $scope.university + '.json'].join('/'))
                 .success(function(response) {
-                	var data = ref[size].data;
-
-
-
+                	processRes(response, ref[size], $scope.university);
+                	console.log(ref);
             })
         }
 
-        function processRes(res, ref){
+        function processRes(res, ref, university){
         	var metric = ref.metric;
         	var data = ref.data;
-        	
+        	var prev = 0;
+
+        	data[0].push(university);
+
+        	for (var year = 2006; year < 2015; year++){
+        		if (res[year]){
+        			var individuals = res[year];
+        			var sum = 0;
+        			for (var i in individuals){
+        				sum += individuals[i][metric];
+        			}
+        			prev = Math.round(sum/individuals.length)
+        			data[year - 2005].push(prev);
+
+        		}
+        		else{
+        			data[year - 2005].push(prev);
+        		}
+        	}
         }
 
     }
