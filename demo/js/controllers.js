@@ -43,7 +43,7 @@ controller('ResearchCtrl', ['$scope', '$http',
         function processRes(res, ref, university) {
             var metric = ref.metric;
             var data = ref.data;
-            var prev = 0;
+            var prev = null;
 
             data[0].push(university);
 

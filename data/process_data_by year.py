@@ -25,6 +25,6 @@ if __name__ == '__main__':
 		universities[university.split('/')[0]] = years 
 	with open('data_by_year.json', 'w') as f:
 		json.dump(universities, f)
-	print json.dumps(universities.keys())
+	print json.dumps(sorted(universities.keys()))
 
 
