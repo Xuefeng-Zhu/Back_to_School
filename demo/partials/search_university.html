@@ -2,9 +2,14 @@
 	<h1>Welcome to Back to School</h1>
 	<p>Select an university to detail information</p>
 	<div class="row">
-		<div class="col-md-5 col-md-offset-3">
+		<div class="col-md-3 col-md-offset-3">
 			<select class="form-control" ng-model="university" ng-options="u for u in universities" style="height: 3.5em">
 				<option value="">-- Select a University --</option>
+			</select>
+		</div>
+		<div class="col-md-2">
+			<select class="form-control" ng-model="metric" ng-options="m for m in metrics" style="height: 3.5em">
+				<option value="">-- Select the Metric --</option>
 			</select>
 		</div>
 		<div class="col-md-2">
