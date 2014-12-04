@@ -36,6 +36,7 @@ controller('ResearchCtrl', ['$scope', '$http',
                 .success(function(response) {
                     processRes(response, ref[size], $scope.university);
                     console.log(ref);
+                    plotChart(ref[size].data)
                 })
         }
 
@@ -68,7 +69,9 @@ controller('ResearchCtrl', ['$scope', '$http',
                 title: 'Comparison between Universities',
                 curveType: 'function',
             };
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
+            chart.draw(data, options);
         }
 
     }
