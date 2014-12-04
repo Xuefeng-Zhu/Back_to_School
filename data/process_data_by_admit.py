@@ -16,7 +16,7 @@ def process_data(data, index):
 	return result 
 
 if __name__ == '__main__':
-	metrics = {'gre_quant': 4, 'gre_verbal': 5, 'gre_awa': 6, 'toefl': 7, 'gpa': 8}
+	metrics = {'gre_quant': 4, 'gre_verbal': 5, 'gre_awa': 6, 'toefl': 7, 'undergrad_gpa': 8}
 	with open('uni_training.json') as f:
 		data = json.load(f)
 	universities = {}
