@@ -86,6 +86,12 @@ angular.module('myApp.controllers', [])
                 var options = {
                     title: 'Comparison between Universities on ' + ref.metric,
                     curveType: 'function',
+                     hAxis: {
+                        title: 'Year',
+                    },
+                    vAxis: {
+                        title: 'Score',
+                    }
                 };
                 var chart = new google.visualization.LineChart(document.getElementById('chart_div' + ref.id));
 
