@@ -14,6 +14,9 @@
 				<option value="">-- Select a University --</option>
 			</select>
 			<button class="btn btn-primary btn-raised" ng-show="comp.university" ng-click="addNewUniversity(comp)">Add</button>
+			<ul>
+				<li ng-repeat="(key, value) in comp.data[0].slice(1)"><a href="#search?university={{value}}&metric=gre_quant" target="_blank">{{value}}</a></li>
+			</ul>
 		</div>
 	</div>
 </div>
