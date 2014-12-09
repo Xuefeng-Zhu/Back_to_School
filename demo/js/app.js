@@ -9,6 +9,7 @@ angular.module('myApp', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/research', 
   	{templateUrl: 'partials/research_universities.html', controller: 'ResearchCtrl'});
+  $routeProvider.when('/find', {templateUrl: 'partials/find_universities.html', controller: 'FindCtrl'});
   $routeProvider.when('/search', {templateUrl: 'partials/search_university.html', controller: 'SearchCtrl'});
   $routeProvider.otherwise({redirectTo: '/research'});
 }]);

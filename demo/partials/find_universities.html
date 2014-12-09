@@ -1,0 +1,60 @@
+<div class="jumbotron">
+	
+	<form class="form-horizontal" ng-submit="submitProfile()">
+		<fieldset>
+			<div class="form-group">
+				<label for="gre_quant" class="col-lg-1 control-label">GRE Quant</label>
+				<div class="col-lg-5">
+					<input type="number" class="form-control" id="gre_quant" ng-model="gre_quant" placeholder="GRE Quant">
+				</div>
+				<label for="gre_verbal" class="col-lg-1 control-label">GRE Verbal</label>
+				<div class="col-lg-5">
+					<input type="number" class="form-control" id="gre_verbal" ng-model="gre_verbal" placeholder="GRE Verbal">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="gre_awa" class="col-lg-1 control-label">GRE Awa</label>
+				<div class="col-lg-5">
+					<input type="number" class="form-control" id="gre_awa" ng-model="gre_awa" placeholder="GRE Awa">
+				</div>
+				<label for="toefl" class="col-lg-1 control-label">Toefl</label>
+				<div class="col-lg-5">
+					<input type="number" class="form-control" id="toefl" ng-model="toefl" placeholder="Toefl">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="gpa" class="col-lg-1 control-label">GPA</label>
+				<div class="col-lg-5">
+					<input type="number" class="form-control" id="gpa" ng-model="gpa" placeholder="GPA">
+				</div>
+				<label class="col-lg-1 control-label">Prediction</label>
+				<div class="col-lg-5">
+					<div class="radio radio-primary">
+						<label>
+							<input type="radio" name="optionsRadios" id="rough" ng-model="prediction" value="rough" checked="">
+							Rough
+						</label>
+					</div>
+					<div class="radio radio-primary">
+						<label>
+							<input type="radio" name="optionsRadios" id="accurate" ng-model="prediction" value="accurate">
+							Accurate
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-offset-1">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<script>
+$(document).ready(function() {
+$.material.init();
+});
+</script>
+<script src="http://www.d3plus.org/js/d3.js"></script>
+<script src="http://www.d3plus.org/js/d3plus.js"></script>

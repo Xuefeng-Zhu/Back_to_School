@@ -94,6 +94,17 @@ angular.module('myApp.controllers', [])
 
         }
     ])
+    .controller('FindCtrl', ['$scope', '$http',
+        function($scope, $http) {
+            $scope.prediction = "rough";
+
+            $scope.submitProfile = function(){
+                if ($scope.prediction == "rouch"){
+                    
+                }
+                console.log($scope.prediction);
+            }
+        }])
     .controller('SearchCtrl', ['$scope', '$http',
         function($scope, $http) {
             $scope.searchUni = function() {
