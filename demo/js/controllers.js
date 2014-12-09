@@ -107,10 +107,10 @@ angular.module('myApp.controllers', [])
             $scope.submitProfile = function() {
                 if ($scope.prediction == "rough") {
                     var tmp = 0
-                    tmp += $scope.gre_quant / 100;
-                    tmp += $scope.gre_verbal / 100;
+                    tmp += ($scope.gre_quant-130) / 40;
+                    tmp += ($scope.gre_verbal-130) / 40;
                     tmp += $scope.gre_awa / 6;
-                    tmp += $scope.toefl / 100;
+                    tmp += $scope.toefl / 120;
                     tmp += $scope.gpa / 100;
                     var avg = Math.round(tmp * 10 / 5) * 10
                     $http.get([url, 'prediction', avg + '.json'].join('/'))
@@ -146,8 +146,15 @@ angular.module('myApp.controllers', [])
             }
         }
     ])
-    .controller('SearchCtrl', ['$scope', '$http',
-        function($scope, $http) {
+    .controller('SearchCtrl', ['$scope', '$http', '$routeParams',
+        function($scope, $http, $routeParams) {
+            $scope.university = $routeParams['university'];
+            $scope.metric = $routeParams['metric'];
+
+            if ($scope.university != undefined && $scope.metric != undefined){
+                $scope.searchUni();
+            }
+
             $scope.searchUni = function() {
                 $scope.search = true;
                 $http.get([url, 'scatter', $scope.university, $scope.metric + '.json'].join('/'))
@@ -202,12 +209,8 @@ angular.module('myApp.controllers', [])
                         minValue: 0
                     }
                 };
-
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
-
                 chart.draw(data, options);
-
-
             }
         }
     ]);
