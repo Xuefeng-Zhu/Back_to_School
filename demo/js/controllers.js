@@ -152,10 +152,10 @@ angular.module('myApp.controllers', [])
             $scope.metric = $routeParams['metric'];
 
             if ($scope.university != undefined && $scope.metric != undefined){
-                $scope.searchUni();
+                searchUni();
             }
 
-            $scope.searchUni = function() {
+            function searchUni() {
                 $scope.search = true;
                 $http.get([url, 'scatter', $scope.university, $scope.metric + '.json'].join('/'))
                     .success(function(response) {
