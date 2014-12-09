@@ -11,8 +11,8 @@ angular.module('myApp.controllers', [])
             $scope.universities = universities;
             $scope.metrics = metrics;
 
-            $scope.$on('$locationChangeSuccess', function(){
-            	$scope.tab = $location.path();
+            $scope.$on('$locationChangeSuccess', function() {
+                $scope.tab = $location.path();
             })
         }
     ])
@@ -98,22 +98,56 @@ angular.module('myApp.controllers', [])
         function($scope, $http) {
             $scope.prediction = "rough";
 
-            $scope.submitProfile = function(){
-                if ($scope.prediction == "rouch"){
-                    
+            $scope.submitProfile = function() {
+                if ($scope.prediction == "rough") {
+                    var tmp = 0
+                    tmp += $scope.gre_quant / 100;
+                    tmp += $scope.gre_verbal / 100;
+                    tmp += $scope.gre_awa / 6;
+                    tmp += $scope.toefl / 100;
+                    tmp += $scope.gpa / 100;
+                    var avg = Math.round(tmp * 10 / 5) * 10
+                    $http.get([url, 'prediction', avg + '.json'].join('/'))
+                        .success(function(response) {
+                            var data = []
+                            var admit = response.admit;
+                            var reject = response.reject;
+                            for (var u in admit) {
+                                data.push({
+                                    value: 10,
+                                    name: admit[u],
+                                    group: 'admit'
+                                });
+                            }
+                            for (var u in reject) {
+                                data.push({
+                                    value: 10,
+                                    name: reject[u],
+                                    group: 'reject'
+                                });
+                            }
+
+                            var visualization = d3plus.viz()
+                                .container("#viz")
+                                .data(data)
+                                .type("tree_map")
+                                .id(["group", "name"])
+                                .size("value")
+                                .draw()
+
+                        })
                 }
-                console.log($scope.prediction);
             }
-        }])
+        }
+    ])
     .controller('SearchCtrl', ['$scope', '$http',
         function($scope, $http) {
             $scope.searchUni = function() {
-            	$scope.search = true;
+                $scope.search = true;
                 $http.get([url, 'scatter', $scope.university, $scope.metric + '.json'].join('/'))
                     .success(function(response) {
                         var data = processRes(response);
                         plotChart(data);
-                        console.log(data)
                     });
             };
 

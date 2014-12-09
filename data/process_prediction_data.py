@@ -14,6 +14,7 @@ if __name__ == '__main__':
 				else:
 					reject.append(university)
 			result[i] = {}
-			result[i]['admin'] = admit
+			result[i]['admit'] = admit
+			result[i]['reject'] = reject
 	with open('data_by_prediction.json', 'w') as fp:
 			json.dump(result, fp)		
