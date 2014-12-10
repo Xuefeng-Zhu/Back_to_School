@@ -5,6 +5,7 @@ if __name__ == '__main__':
 	for i in range(0, 101, 10):
 		with open('prediciton_data/output_' + str(i)) as f:
 			data = f.readlines()[0]
+			print data
 			universities = eval(data)
 			admit = []
 			reject = []
